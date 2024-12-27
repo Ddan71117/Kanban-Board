@@ -6,13 +6,13 @@ export const authenticateToken = (req, res, next) => {
         const secretKey = process.env.JWT_SECRET_KEY || '';
         jwt.verify(token, secretKey, (err, user) => {
             if (err) {
-                return res.sendStatus(403).json({ message: 'Invalid or expired token' });
+                return res.status(403).json({ message: 'Invalid or expired token' });
             }
             req.user = user;
             return next();
         });
     }
     else {
-        res.sendStatus(401);
+        res.status(401).json({ message: 'Authorization header is missing.' });
     }
 };
