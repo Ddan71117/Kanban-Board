@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import InactivityLogout from "./hooks/InactivityLogout";
+import useInactivityLogout from "./hooks/useInactivityLogout";
 import AuthService from "./utils/auth";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     AuthService.logout();
   };
 
-  InactivityLogout(timeoutDuration, logout);
+  useInactivityLogout(timeoutDuration, logout);
 
   return (
     <div className="container">
