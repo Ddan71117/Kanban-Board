@@ -1,20 +1,23 @@
 import { useEffect } from "react";
 
-const InactivityLogout = (
+const useInactivityLogout = (
   timeoutDuration: number,
   logoutFunction: () => void
 ): void => {
   useEffect(() => {
-    let timer: NodeJS.Timeout | undefined;
+    let timer: number | undefined;
 
     const resetTimer = () => {
-      if (timer) clearTimeout(timer);
-      timer = setTimeout(() => {
+      if (timer !== undefined) clearTimeout(timer);
+      timer = window.setTimeout(() => {
         logoutFunction();
       }, timeoutDuration);
     };
 
     resetTimer();
+
+    window.addEventListener("mousemove", resetTimer);
+    window.addEventListener("keypress", resetTimer);
 
     return () => {
       clearTimeout(timer);
@@ -24,4 +27,4 @@ const InactivityLogout = (
   }, [timeoutDuration, logoutFunction]);
 };
 
-export default InactivityLogout;
+export default useInactivityLogout;
