@@ -26,7 +26,7 @@ after installing the application, navigate to the login page and sign in with on
 
 Link for deployed application:
 
-[Kanban Board](https://github-candidate-finder-8wxz.onrender.com)
+[Kanban Board](https://kanban-board-y281.onrender.com)
 
 ## Tests
 
